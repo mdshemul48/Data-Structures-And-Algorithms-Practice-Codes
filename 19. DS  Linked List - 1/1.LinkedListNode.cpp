@@ -36,5 +36,11 @@ int main()
     Node *head = &n1; // aita holo array ar main head node; aita thaka amadar linkedList start hobe.
 
     cout << head->data << endl; // aita head->data use kore amara list ar first node ar data access korte pari..
+
+    // Dynamically
+    Node *n3 = new Node(3);
+    Node *n4 = new Node(4);
+    n3->next = n4;
+
     return 0;
 }
