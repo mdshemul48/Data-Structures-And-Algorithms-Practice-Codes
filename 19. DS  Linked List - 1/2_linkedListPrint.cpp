@@ -28,9 +28,10 @@ void print(Node *head)
     // and set next node to head node.
     while (head != NULL)
     {
-        cout << head->data << " ";
+        cout << head->data << "->";
         head = head->next;
     }
+    cout << "NULL" << endl;
 }
 int main()
 {
