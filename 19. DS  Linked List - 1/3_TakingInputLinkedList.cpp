@@ -52,7 +52,7 @@ Node *takeInput()
         }
         else
         {
-            tail->next = n;
+            tail->next = n; // inseting at Tail
             tail = n;
         }
         cin >> data;
