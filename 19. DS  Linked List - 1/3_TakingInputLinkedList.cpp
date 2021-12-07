@@ -60,9 +60,35 @@ Node *takeInput()
     return head;
 }
 
+Node *takeInputInReverse()
+{
+    Node *head = NULL;
+    Node *tail = NULL;
+
+    int data;
+    cin >> data;
+    while (data != -1)
+    {
+        Node *n = new Node(data);
+
+        if (tail == NULL)
+        {
+            head = n;
+            tail = n;
+        }
+        else
+        {
+            n->next = head;
+            head = n;
+        }
+        cin >> data;
+    }
+    return head;
+}
+
 int main()
 {
-    Node *head = takeInput();
+    Node *head = takeInputInReverse();
     print(head);
 
     return 0;
