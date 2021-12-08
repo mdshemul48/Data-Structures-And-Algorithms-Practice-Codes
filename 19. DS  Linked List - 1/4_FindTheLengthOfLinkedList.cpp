@@ -53,6 +53,13 @@ Node *takeInput()
 
 int linkedListLength(Node *head)
 {
+    // here we are first of all checking if our linkList head is null or not.
+    // if the head is null that's mean our linked list is empty. then we will return 0;
+    // but if our linked list head is not empty that's mean our linked list have some items.
+    // at that moment we will start loop with condition of node null or not.
+    // we will count till we find null as a current node.
+    // after all the counting we will return the count variable.
+
     if (head == NULL)
     {
         return 0;
