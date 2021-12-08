@@ -51,11 +51,37 @@ void print(Node *head)
     cout << "NULL" << endl;
 }
 
+Node *findIthElement(Node *head, int i)
+{
+
+    // here we are counting the array item and checking if out counter mathchs with index or not.
+    // if our current index == i that's means we found our expected item.
+    // after that we will just return that node.
+    int index = 0;
+    Node *temp = head;
+
+    while (temp)
+    {
+        if (index++ == i)
+        {
+            return temp;
+        }
+        else
+        {
+            temp = temp->next;
+        }
+    }
+}
+
 int main()
 {
+    // this is passing input to console..
     freopen("input.txt", "r", stdin);
 
     Node *head = takeInput();
-    print(head);
+
+    Node *IthElement = findIthElement(head, 2);
+
+    cout << IthElement->data << endl;
     return 0;
 }
