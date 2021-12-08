@@ -51,10 +51,28 @@ Node *takeInput()
     return head;
 }
 
+int linkedListLength(Node *head)
+{
+    if (head == NULL)
+    {
+        return 0;
+    }
+
+    int count = 0;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
 int main()
 {
     Node *head = takeInput();
-    print(head);
+    int n = linkedListLength(head);
+    cout << n << endl;
 
     return 0;
 }
