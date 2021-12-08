@@ -57,20 +57,15 @@ Node *findIthElement(Node *head, int i)
     // here we are counting the array item and checking if out counter mathchs with index or not.
     // if our current index == i that's means we found our expected item.
     // after that we will just return that node.
-    int index = 0;
+    int count = 1;
     Node *temp = head;
 
-    while (temp)
+    while (count <= i and temp != NULL)
     {
-        if (index++ == i)
-        {
-            return temp;
-        }
-        else
-        {
-            temp = temp->next;
-        }
+        temp = temp->next;
+        count++;
     }
+    return temp;
 }
 
 int main()
@@ -80,7 +75,7 @@ int main()
 
     Node *head = takeInput();
 
-    Node *IthElement = findIthElement(head, 2);
+    Node *IthElement = findIthElement(head, 0);
 
     cout << IthElement->data << endl;
     return 0;
