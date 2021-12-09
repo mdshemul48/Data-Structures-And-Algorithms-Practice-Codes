@@ -53,10 +53,6 @@ void print(Node *head)
 
 Node *findIthElement(Node *head, int i)
 {
-
-    // here we are counting the array item and checking if out counter mathchs with index or not.
-    // if our current index == i that's means we found our expected item.
-    // after that we will just return that node.
     if (i < 0)
     {
         return NULL;
@@ -72,6 +68,48 @@ Node *findIthElement(Node *head, int i)
     return temp;
 }
 
+Node *insertNodeAtIthPosition(Node *head, int data, int i)
+{
+    // first of all we are cheking that we are at 0th index or not.
+    // if we area in the zero then we will replace head with our new node.
+    // and new head next will point to the old head.
+    // otherwise we will find the index using counting and loop.
+    // there we will select prev node of our selected node.
+    // we will redirect our selected item node to prev item next node.
+    // then we will redirect prev node next pointer to our newly created node.
+    // after all the work we will return the head node.
+
+    if (i < 0)
+    {
+        return head;
+    }
+
+    if (i == 0)
+    {
+        Node *n = new Node(data);
+        n->next = head;
+        head = n;
+        return head;
+    }
+
+    int count = 1;
+    Node *temp = head;
+    while (count <= i - 1 && temp != NULL)
+    {
+        temp = temp->next;
+        count++;
+    }
+
+    if (temp)
+    {
+        Node *n = new Node(data);
+        n->next = temp->next;
+        temp->next = n;
+        return head;
+    }
+    return head;
+}
+
 int main()
 {
     // this is passing input to console..
@@ -79,8 +117,9 @@ int main()
 
     Node *head = takeInput();
 
-    Node *IthElement = findIthElement(head, 0);
+    head = insertNodeAtIthPosition(head, 5, 1);
 
-    cout << IthElement->data << endl;
+    print(head);
+
     return 0;
 }
