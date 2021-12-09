@@ -72,6 +72,7 @@ Node *deleteNodeAtIthPosition(Node *head, int i)
         Node *deletedNode = head;
         head = head->next;
         delete deletedNode;
+        deletedNode->next = NULL;
         return head;
     }
 
@@ -87,6 +88,7 @@ Node *deleteNodeAtIthPosition(Node *head, int i)
     {
         Node *deletedNode = temp->next;
         temp->next = temp->next->next;
+        deletedNode->next = NULL;
         delete deletedNode;
         return head;
     }
