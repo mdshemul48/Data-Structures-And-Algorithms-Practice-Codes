@@ -69,7 +69,9 @@ Node *deleteNodeAtIthPosition(Node *head, int i)
     }
     if (i == 0)
     {
+        Node *deletedNode = head;
         head = head->next;
+        delete deletedNode;
         return head;
     }
 
@@ -83,7 +85,9 @@ Node *deleteNodeAtIthPosition(Node *head, int i)
 
     if (temp && temp->next)
     {
+        Node *deletedNode = temp->next;
         temp->next = temp->next->next;
+        delete deletedNode;
         return head;
     }
 
@@ -96,7 +100,7 @@ int main()
     freopen("input.txt", "r", stdin);
 
     Node *head = takeInput();
-    head = deleteNodeAtIthPosition(head, 0);
+    head = deleteNodeAtIthPosition(head, 1);
     print(head);
 
     return 0;
