@@ -51,7 +51,20 @@ Node *takeInput()
     return head;
 }
 
+int findLength(Node *head)
+{
 
+    // if the head null then return 0;
+    // or call for the head->next.
+    // it will return length for the rest of the list.
+    // after it return we will + with 1 and return from the function.
+    if (!head)
+    {
+        return 0;
+    }
+
+    return 1 + findLength(head->next);
+}
 
 int main()
 {
@@ -59,6 +72,8 @@ int main()
     freopen("input.txt", "r", stdin);
     Node *head = takeInput();
     print(head);
+    int n = findLength(head);
+    cout << n << endl;
 
     return 0;
 }
