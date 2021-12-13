@@ -51,6 +51,31 @@ Node *takeInput()
     return head;
 }
 
+Node *reverseTheLinkedList(Node *head)
+{
+    // here first of all selecting the head node as a current node.
+    // then we are selecting the prvNode as null
+
+    // after that in the loop we are storeing current next node
+    // then we area redirecting currentNode-> next node to prevNode;
+    // after that we are selecting prevNode as current node.
+    // and current node as next node.
+
+    // we are reperting this proccess till we found NULL and our LinkedList reversed.
+
+    Node *currentNode = head;
+    Node *prevNode = NULL;
+    while (currentNode != NULL)
+    {
+        Node *n = currentNode->next;
+        currentNode->next = prevNode;
+
+        prevNode = currentNode;
+        currentNode = n;
+    }
+    return prevNode;
+}
+
 int main()
 {
 
@@ -58,7 +83,7 @@ int main()
     freopen("output.txt", "w", stdout);
 
     Node *head = takeInput();
-
+    head = reverseTheLinkedList(head);
     print(head);
 
     return 0;
