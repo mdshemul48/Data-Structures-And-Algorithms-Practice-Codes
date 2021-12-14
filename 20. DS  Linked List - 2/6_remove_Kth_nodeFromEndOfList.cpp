@@ -77,7 +77,9 @@ Node *removeKthElementFromEnd(Node *head, int k)
         fastNode = fastNode->next;
         slowNode = slowNode->next;
     }
+    Node *deletedNode = slowNode->next;
     slowNode->next = slowNode->next->next;
+    delete deletedNode;
 
     return head;
 }
