@@ -51,6 +51,29 @@ Node *takeInput()
     return head;
 }
 
+Node *removeKthElementFromEnd(Node *head, int k)
+{
+
+    
+    Node *fastNode = head;
+    Node *slowNode = head;
+    int count = 0;
+    while (count <= k + 1)
+    {
+        fastNode = fastNode->next;
+        count++;
+    }
+
+    while (fastNode)
+    {
+        fastNode = fastNode->next;
+        slowNode = slowNode->next;
+    }
+    slowNode->next = slowNode->next->next;
+
+    return head;
+}
+
 int main()
 {
 
@@ -58,7 +81,9 @@ int main()
     freopen("output.txt", "w", stdout);
 
     Node *head = takeInput();
+    head = removeKthElementFromEnd(head, 4);
     print(head);
 
+    cout << "DONE" << endl;
     return 0;
 }
