@@ -54,7 +54,15 @@ Node *takeInput()
 Node *removeKthElementFromEnd(Node *head, int k)
 {
 
-    
+    /*
+    the fastNode will walk kth pointer first then it will come out of the loop.
+    after that the slowNode and fastNode will walk togathar..
+    when the fastNode will go to the end.
+    the slowPointer will be at his destination. from end to kTh+1 node.
+    at that time we will delete the kth Node from list.
+    by
+    slowNode->next = (kthNode+1)->next->next;
+    */
     Node *fastNode = head;
     Node *slowNode = head;
     int count = 0;
