@@ -41,8 +41,18 @@ public:
         // this will add an element to the top.
         if (capacity == nextIndex)
         {
-            cout << "Stack Full" << endl;
-            return;
+            // creating new array of 2x size of capacity and coping old values to new one
+            int *newArr = new int[capacity * 2];
+            // updating capacity value.
+            capacity = capacity * 2;
+            for (int i = 0; i < capacity; i++)
+            {
+                newArr[i] = arr[i];
+            }
+            // after copy deleting old array.
+            delete[] arr;
+            // assigning new array to old array place.
+            arr = newArr;
         }
         arr[nextIndex++] = value;
     }
@@ -70,11 +80,12 @@ public:
 
 int main()
 {
-    Stack s(4);
+    Stack s;
     s.push(10);
     s.push(20);
     s.push(30);
     s.push(40);
+    s.push(50);
 
     cout << s.top() << endl;
     s.pop();
