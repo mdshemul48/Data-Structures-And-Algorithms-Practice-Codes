@@ -13,6 +13,18 @@ public:
     }
 };
 
+// this print func will take params and call same func with it root all the children
+// this way all the children data will get print
+void printTree(TreeNode<int> *root)
+{
+    cout << root->data << endl;
+
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        printTree(root->children[i]);
+    }
+}
+
 int main()
 {
     TreeNode<int> *root = new TreeNode<int>(1);
@@ -21,6 +33,8 @@ int main()
 
     root->children.push_back(n1);
     root->children.push_back(n2);
+
+    printTree(root);
 
     return 0;
 }
