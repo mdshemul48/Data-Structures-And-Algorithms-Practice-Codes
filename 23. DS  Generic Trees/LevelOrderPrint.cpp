@@ -90,6 +90,8 @@ void printTreeLevelWise(TreeNode<int> *root)
 
 main()
 {
+    TreeNode<int> *storage = takeInput();
+    printTreeLevelWise(storage);
 
     return 0;
 }
