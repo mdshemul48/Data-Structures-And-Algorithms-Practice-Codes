@@ -22,17 +22,40 @@ public:
     }
 };
 
+// aikane amara first a check kortaci ja input ke -1 nake
+// jodi input -1 hoy tar mane user ar binary node add korte chy na..
+// ar jodi -1 bad a ono kono sonkha hoy tahole akta new node create kore.
+// then left and right node create korar jono abar takeInput function call korbe.
+// jodi left ba right takeinput func a input -1 dy tahole oita null return kore deba.
+// mane kono data ni..
+
+BTNode<int> *takeInput()
+{
+
+    int rootData;
+    cout << "Enter data" << endl;
+    cin >> rootData;
+
+    if (rootData == -1)
+    {
+        return NULL;
+    }
+
+    BTNode<int> *root = new BTNode<int>(rootData);
+
+    BTNode<int> *leftChild = takeInput();
+    BTNode<int> *rightChild = takeInput();
+
+    root->left = leftChild;
+    root->right = rightChild;
+
+    return root;
+}
+
 int main()
 {
     // creating tree
-    BTNode<int> *root = new BTNode<int>(1);
-    BTNode<int> *n1 = new BTNode<int>(2);
-    BTNode<int> *n2 = new BTNode<int>(3);
-
-    root->left = n1;
-    root->right = n2;
-
-    delete root;
+    BTNode<int> *root = takeInput();
 
     return 0;
 }
