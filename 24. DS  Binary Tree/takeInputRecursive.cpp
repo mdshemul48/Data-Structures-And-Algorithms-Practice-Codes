@@ -22,6 +22,31 @@ public:
     }
 };
 
+void printTree(BTNode<int> *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    cout << root->data << ": ";
+
+    if (root->left != NULL)
+    {
+        cout << "L" << root->left->data;
+    }
+
+    if (root->right != NULL)
+    {
+        cout << "R" << root->right->data;
+    }
+    cout << endl;
+
+    printTree(root->left);
+    printTree(root->right);
+}
+
+// =============================================
 // aikane amara first a check kortaci ja input ke -1 nake
 // jodi input -1 hoy tar mane user ar binary node add korte chy na..
 // ar jodi -1 bad a ono kono sonkha hoy tahole akta new node create kore.
@@ -57,5 +82,6 @@ int main()
     // creating tree
     BTNode<int> *root = takeInput();
 
+    printTree(root);
     return 0;
 }
