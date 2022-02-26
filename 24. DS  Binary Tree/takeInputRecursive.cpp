@@ -68,11 +68,8 @@ BTNode<int> *takeInput()
 
     BTNode<int> *root = new BTNode<int>(rootData);
 
-    BTNode<int> *leftChild = takeInput();
-    BTNode<int> *rightChild = takeInput();
-
-    root->left = leftChild;
-    root->right = rightChild;
+    root->left = takeInput();
+    root->right = takeInput();
 
     return root;
 }
