@@ -83,11 +83,39 @@ BTNode<int> *takeInputlevelWise()
     return root;
 }
 
+// first a amara amadar root element ta print kortaci then check kortaci ja
+// then amara check korbo ja left right a kono node ase nake.
+// jodi thake tahole queue ta push korbo..
+
+void printLevelOrder(BTNode<int> *root)
+{
+    queue<BTNode<int> *> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        BTNode<int> *front = q.front();
+        q.pop();
+
+        cout << front->data << endl;
+
+        if (front->left)
+        {
+            q.push(front->left);
+        }
+
+        if (front->right)
+        {
+            q.push(front->right);
+        }
+    }
+}
+
 int main()
 {
 
     BTNode<int> *root = takeInputlevelWise();
-    printTree(root);
+    printLevelOrder(root);
 
     return 0;
 }
