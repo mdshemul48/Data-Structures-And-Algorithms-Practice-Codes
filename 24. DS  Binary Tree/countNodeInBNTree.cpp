@@ -82,11 +82,24 @@ BTNode<int> *takeInputlevelWise()
     return root;
 }
 
+//===============================================
+// aikane first a amara check kortaci ja amadar main root ase nake.
+// jodi main root thake tahole amara main root ar jono 1 + kore abar left and right root ar jono
+// count func call korbo. then amara oigunar count ar sate 1+ kore debo. taholai amara total length paya jabo.
+
+int countBNTree(BTNode<int> *root)
+{
+    if (!root)
+        return 0;
+    return 1 + countBNTree(root->left) + countBNTree(root->right);
+}
+
 int main()
 {
 
     BTNode<int> *root = takeInputlevelWise();
-    printTree(root);
+
+    cout << countBNTree(root) << endl;
 
     return 0;
 }
