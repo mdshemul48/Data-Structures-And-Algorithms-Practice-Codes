@@ -82,9 +82,26 @@ BTNode<int> *takeInputlevelWise()
     return root;
 }
 
+// first amara left right ar max depth find korbo..
+// then jaitar max length hobe tar sate amadar current node ar jono 1+ kore debo.
+
+int maxDepthBT(BTNode<int> *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+
+    int left = maxDepthBT(root->left);
+    int right = maxDepthBT(root->right);
+
+    return 1 + max(left, right);
+}
+
 int main()
 {
 
     BTNode<int> *root = takeInputlevelWise();
+    cout << maxDepthBT(root) << endl;
     return 0;
 }
