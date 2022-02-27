@@ -97,7 +97,7 @@ void printLevelOrder(BTNode<int> *root)
         BTNode<int> *front = q.front();
         q.pop();
 
-        cout << front->data << endl;
+        cout << front->data << " ";
 
         if (front->left)
         {
