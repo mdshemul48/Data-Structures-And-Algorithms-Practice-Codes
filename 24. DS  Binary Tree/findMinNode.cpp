@@ -81,6 +81,10 @@ BTNode<int> *takeInputlevelWise()
     return root;
 }
 
+//==================================================
+// aikane amara mainly check kortaci. potita node ar left right ar data and node ar data modhe konta choto.
+// aita akhom choto hobe oita amra return korechi.
+
 int findMin(BTNode<int> *root)
 {
     if (!root)
