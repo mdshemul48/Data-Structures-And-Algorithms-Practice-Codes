@@ -83,7 +83,7 @@ BTNode<int> *takeInputlevelWise()
 
 //==================================================
 // aikane amara mainly check kortaci. potita node ar left right ar data and node ar data modhe konta choto.
-// aita akhom choto hobe oita amra return korechi.
+// aita akhom choto hobe oita amra return korechi. and max function a amara ar ulta kaj korci..
 
 int findMin(BTNode<int> *root)
 {
@@ -93,9 +93,20 @@ int findMin(BTNode<int> *root)
     return min(root->data, minNum);
 }
 
+int findMax(BTNode<int> *root)
+{
+    if (!root)
+    {
+        return INT_MIN;
+    }
+
+    return max(root->data, max(findMax(root->left), findMax(root->right)));
+}
+
 int main()
 {
     BTNode<int> *root = takeInputlevelWise();
     cout << findMin(root) << endl;
+    cout << findMax(root) << endl;
     return 0;
 }
