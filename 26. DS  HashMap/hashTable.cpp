@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// collision handling a
+// closed hasing a amara jodi collision hoy tahole linked List deya handle kori.
+// ar open addressing a amara jodi collision hoy tahole next index a store kore debo..
+//---------------------> Linear Probing=> aikane amara targat index jodi already value thake tahole next tai check korbo then oitai store korbo.
+//---------------------> Quadratic Probing a amara i^2 a check korbo kono element ase nake. jodi na thake tahole oikane store korbo. (better option)
+
 template <typename v>
 class MapNode
 {
