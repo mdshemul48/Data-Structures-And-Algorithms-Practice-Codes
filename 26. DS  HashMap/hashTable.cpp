@@ -105,6 +105,13 @@ public:
     }
     void remove(string key)
     {
+
+        // here amara first a amadar key ar jono index ta neya nebo.
+        // then oita jai position a ase oikane amara linked List a check korbo ja amadar key ase nake..
+        // jodi amadar key thake tahole amara key matched node ar prev node to current node ar next node a point kore debo.
+        // ar jodi head node matched hoy tahole amara just head node ar next node ka point kore head node delete kore debo.
+        // jodi key amadar table a na thake tahole amara just 0 return kore debo.
+
         int basketIndex = getBucketIndex(key);
         MapNode<V> *head = buckets[basketIndex];
         MapNode<V> *prev = NULL;
