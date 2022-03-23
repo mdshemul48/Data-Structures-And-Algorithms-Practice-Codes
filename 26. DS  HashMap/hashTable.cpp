@@ -25,7 +25,7 @@ public:
     }
 };
 
-template <typename v>
+template <typename V>
 class MyMap
 {
 private:
@@ -80,6 +80,21 @@ public:
     void insert(string key, v value)
     {
         int bucketIndex = getBucketIndex(key);
+        MapNode<V> *head = buckets[bucketIndex];
+
+        while (head != NULL)
+        {
+            if (head->key == key)
+            {
+                head->value = value;
+                return;
+            }
+            head = head->next;
+        }
+        MapNode<V> *node = new MapNode<V>(key, value);
+        node->next = buckets[bucketIndex];
+        buckets[bucketIndex] = node;
+        count++;
     }
     void remove()
     {
