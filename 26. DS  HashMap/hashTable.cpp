@@ -79,6 +79,13 @@ public:
     }
     void insert(string key, v value)
     {
+        // ai function a first a amara amadar key ar jono akta index value nebo using getBusketFunc
+        // then amara oitar head dhore check korbo ja oitar modhe amadar key deya already exist kono value ase nake..
+        // jodi amadar key already thake tahole amara just oitar value ta update kore debo..
+        // ar amon na hole amara amadar head null pabo..
+
+        // then amara akta new node create kore then jodi already exist linkedList thake tahole oitar samne add kore debo.
+        // and count++ kore debo.
         int bucketIndex = getBucketIndex(key);
         MapNode<V> *head = buckets[bucketIndex];
 
