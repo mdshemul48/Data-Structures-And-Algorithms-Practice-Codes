@@ -103,8 +103,34 @@ public:
         buckets[bucketIndex] = node;
         count++;
     }
-    void remove()
+    void remove(string key)
     {
+        int basketIndex = getBucketIndex(key);
+        MapNode<V> *head = buckets[basketIndex];
+        MapNode<V> *prev = NULL;
+
+        while (head != NULL)
+        {
+            if (head->key == key)
+            {
+                if (prev == NULL)
+                {
+                    buckets[basketIndex] = head->next;
+                }
+                else
+                {
+                    prev->next = head->next;
+                }
+                V value = head->value;
+                head->next = NULL;
+                delete head;
+                count--;
+                return value;
+            }
+            prev = head;
+            head = head->next;
+        }
+        return 0;
     }
 };
 
