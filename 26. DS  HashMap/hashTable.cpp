@@ -74,10 +74,25 @@ public:
         return count;
     }
 
-    v getValue(string key)
+    V getValue(string key)
     {
+        // aikane amara fist a busket index bar kortaci for key
+        // then amara oitar head node dhore check kortaci konta key oitar sate match hoy.
+        // jodi match hoy tahole otar value return kore debo..
+        // ar na hole just 0 return kore debo.
+        int busketIndex = getBucketIndex(key);
+        MapNode<V> *head = buckets[busketIndex];
+        while (head != NULL)
+        {
+            if (head->key == key)
+            {
+                return head->value;
+            }
+            head = head->next;
+        }
+        return 0;
     }
-    void insert(string key, v value)
+    void insert(string key, V value)
     {
         // ai function a first a amara amadar key ar jono akta index value nebo using getBusketFunc
         // then amara oitar head dhore check korbo ja oitar modhe amadar key deya already exist kono value ase nake..
