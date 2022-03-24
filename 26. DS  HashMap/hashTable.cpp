@@ -54,6 +54,7 @@ private:
     {
         // jokhon amadar hashMap ar load ratio 0.7 ar upor hobe tokhon amara amadar buckets array ar elements
         // new akta array create kore 2x size ar oitai sob value abar rehash kore entry korbo.
+
         MapNode<V> **temp = buckets;
         buckets = new MapNode<V> *[2 * numBuckets];
         for (int i = 0; i < 2 * numBuckets; i++)
@@ -196,6 +197,10 @@ public:
         }
         return;
     }
+    double getLoadFector()
+    {
+        return (1.0 * count) / numBuckets;
+    }
 };
 
 int main()
@@ -210,9 +215,17 @@ int main()
         key = key + c;
         int value = i + 1;
         ourMap.insert(key, value);
+        cout << ourMap.getLoadFector() << endl;
     }
 
     cout << ourMap.size() << endl;
 
+    for (int i = 0; i < 10; i++)
+    {
+        char c = '0' + i;
+        string key = "abc";
+        key = key + c;
+        cout << key << " " << ourMap.getValue(key) << endl;
+    }
     return 0;
 }
