@@ -7,14 +7,14 @@ using namespace std;
 //---------------------> Linear Probing=> aikane amara targat index jodi already value thake tahole next tai check korbo then oitai store korbo.
 //---------------------> Quadratic Probing a amara i^2 a check korbo kono element ase nake. jodi na thake tahole oikane store korbo. (better option)
 
-template <typename v>
+template <typename V>
 class MapNode
 {
 public:
     string key;
-    v value;
+    V value;
     MapNode *next;
-    MapNode(string key, v value)
+    MapNode(string key, V value)
     {
         this->key = key;
         this->value = value;
@@ -29,7 +29,7 @@ template <typename V>
 class MyMap
 {
 private:
-    MapNode<v> **buckets;
+    MapNode<V> **buckets;
     int count;
     int numBuckets;
 
@@ -50,12 +50,46 @@ private:
         return hashcode % numBuckets;
     }
 
+    void reHash()
+    {
+        // jokhon amadar hashMap ar load ratio 0.7 ar upor hobe tokhon amara amadar buckets array ar elements
+        // new akta array create kore 2x size ar oitai sob value abar rehash kore entry korbo.
+        MapNode<V> **temp = buckets;
+        buckets = new MapNode<V> *[2 * numBuckets];
+        for (int i = 0; i < 2 * numBuckets; i++)
+        {
+            buckets[i] = NULL;
+        }
+        int oldBucketSize = numBuckets;
+        numBuckets *= 2;
+        count = 0;
+
+        for (int i = 0; i < oldBucketSize; i++)
+        {
+            MapNode<V> *head = temp[i];
+            while (head != NULL)
+            {
+                string key = head->key;
+                V value = head->value;
+                insert(key, value);
+                head = head->next;
+            }
+        }
+
+        // deleting temp arr
+        for (int i = 0; i < oldBucketSize; i++)
+        {
+            delete temp[i];
+        }
+        delete[] temp;
+    }
+
 public:
     MyMap()
     {
         count = 0;
         numBuckets = 5;
-        buckets = new MapNode<v> *[numBuckets];
+        buckets = new MapNode<V> *[numBuckets];
         for (int i = 0; i < numBuckets; i++)
         {
             buckets[i] = NULL;
@@ -117,6 +151,14 @@ public:
         node->next = buckets[bucketIndex];
         buckets[bucketIndex] = node;
         count++;
+
+        // calculating load factor
+        double loadFactor = (1.0 * count) / numBuckets;
+
+        if (loadFactor > 0.7)
+        {
+            reHash();
+        }
     }
     void remove(string key)
     {
@@ -152,12 +194,25 @@ public:
             prev = head;
             head = head->next;
         }
-        return 0;
+        return;
     }
 };
 
 int main()
 {
+
+    MyMap<int> ourMap;
+
+    for (int i = 0; i < 10; i++)
+    {
+        char c = '0' + i;
+        string key = "abc";
+        key = key + c;
+        int value = i + 1;
+        ourMap.insert(key, value);
+    }
+
+    cout << ourMap.size() << endl;
 
     return 0;
 }
