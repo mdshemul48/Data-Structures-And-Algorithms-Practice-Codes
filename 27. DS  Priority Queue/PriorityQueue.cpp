@@ -34,6 +34,13 @@ public:
 
     void insert(int element)
     {
+
+        // aikane amara first a akta array ta data push kortaci..
+        // then oitar last index neya
+        // while loop a child index use kore parent index bar korte hobe. formula = (child-1)/2;
+        // then amara check korbo child index ar value ke amadar parent index ar chaya choto.
+        // jodi choto hoy tahole amara swap korbo or break. then parent index ka child index kore debo.
+
         pq.push_back(element);
         int childIndex = pq.size() - 1;
         while (childIndex > 0)
@@ -53,6 +60,14 @@ public:
 
     int removeMin()
     {
+
+        // remove min a amara first a
+        // first and last index a jai value ase oigula swap korbo and last value delete kore debo.
+        // then amara check korbo amadar BT a left nake right ar value amadar current value ar choto
+        // jaita choto hobe oitar sate amadar value swap korbo and oitaka parent index kore debo.
+        // jokhon amadar min index and parent index soman hobe tar mane amara target index a chole aschi..
+        // tokhon amara amadar loop break kore debo.
+
         if (isEmpty())
         {
             return 0;
