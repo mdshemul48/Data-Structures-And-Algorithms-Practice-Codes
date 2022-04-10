@@ -2,15 +2,15 @@
 
 using namespace std;
 
-/* 
+/*
             Kadanes algo
     aitate amara sub array ar largest sum bar kortaci..
-    ai algo ta amara 2 ta variable create kore.. 
-    then  akta loop ar moda curent element ar value ar sate currentSum 
-    variable ar value jog kori.. aita jodi negative a cole jy tahole 
+    ai algo ta amara 2 ta variable create kore..
+    then  akta loop ar moda curent element ar value ar sate currentSum
+    variable ar value jog kori.. aita jodi negative a cole jy tahole
     currentSum ar value 0 kore debo.. ar jodi aita largest number thaka boro hoy
-    tahole largest number ar sate aitaka replace kore debo..  
-    aitar time complexity O(n) and space complexity O(1)     
+    tahole largest number ar sate aitaka replace kore debo..
+    aitar time complexity O(n) and space complexity O(1)
 
 */
 

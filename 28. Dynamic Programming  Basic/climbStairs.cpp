@@ -46,4 +46,4 @@ int main()
     cout << countSteps2(5) << endl;
     cout << countStep3(5) << endl;
     return 0;
-}
+} 
