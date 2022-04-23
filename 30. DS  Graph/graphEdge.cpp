@@ -20,6 +20,30 @@ void print(vector<vector<int>> v, int sv, vector<bool> &visited)
     }
 }
 
+void bfsPrint(vector<vector<int>> v, int sv)
+{
+    int n = v.size();
+    vector<bool> visited(n, false);
+    queue<int> q;
+    q.push(sv);
+    visited[sv] = true;
+
+    while (!q.empty())
+    {
+        int cv = q.front();
+        q.pop();
+        cout << cv << endl;
+        for (int i = 0; i < n; i++)
+        {
+            if (v[cv][i] && visited[i] == false)
+            {
+                q.push(i);
+                visited[i] = true;
+            }
+        }
+    }
+}
+
 int main()
 {
     int n, e;
