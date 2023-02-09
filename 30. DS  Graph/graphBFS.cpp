@@ -55,6 +55,29 @@ public:
             cout << endl;
         }
     }
+    void bfs(string source)
+    {
+        queue<string> q;
+        unordered_map<string, bool> visited;
+        q.push(source);
+        visited[source] = true;
+
+        while (!q.empty())
+        {
+            string name = q.front();
+            cout << name << endl;
+            q.pop();
+
+            for (string nbr : m[name]->nbrs)
+            {
+                if (visited.find(nbr) == visited.end())
+                {
+                    q.push(nbr);
+                    visited[nbr] = true;
+                }
+            }
+        }
+    }
 };
 
 int main()
@@ -68,7 +91,7 @@ int main()
     g.addEdge("Hyderabad", "Delhi");
     g.addEdge("Bangalore", "Delhi");
     g.addEdge("Delhi", "Bangalore");
-    g.printAdjList();
+    g.bfs("Mumbai");
 
     return 0;
 }
